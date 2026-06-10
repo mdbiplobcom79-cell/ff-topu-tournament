@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF TOPU TOURNAMENT</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+}
+
+header{
+background:#00aa00;
+padding:15px;
+text-align:center;
+font-size:28px;
+font-weight:bold;
+color:#fff;
+}
+
+.logo{
+width:100px;
+height:100px;
+border-radius:50%;
+background:#fff;
+color:#00aa00;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+font-weight:bold;
+margin:15px auto;
+}
+
+nav{
+display:flex;
+overflow:auto;
+background:#111;
+}
+
+nav button{
+flex:1;
+padding:12px;
+border:none;
+background:#111;
+color:#fff;
+font-size:15px;
+}
+
+nav button:hover{
+background:#00aa00;
+}
+
+.page{
+display:none;
+padding:15px;
+}
+
+.active{
+display:block;
+}
+
+.card{
+background:#111;
+border:2px solid #00aa00;
+border-radius:10px;
+padding:15px;
+margin-top:10px;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin-top:8px;
+background:#000;
+color:#fff;
+border:1px solid #00aa00;
+}
+
+button.save{
+background:#00aa00;
+color:#fff;
+padding:10px;
+border:none;
+margin-top:10px;
+width:100%;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+table th,table td{
+border:1px solid #00aa00;
+padding:10px;
+text-align:center;
+}
+
+.green-page{
+background:#ffffff;
+color:#008000;
+min-height:100vh;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+FF TOPU TOURNAMENT
+</header>
+
+<div class="logo">
+FF
+</div>
+
+<nav>
+<button onclick="showPage('home')">Home</button>
+<button onclick="showPage('matches')">Matches</button>
+<button onclick="showPage('leaderboard')">Leaderboard</button>
+<button onclick="showPage('players')">Players</button>
+<button onclick="showPage('admin')">Admin</button>
+</nav>
+
+<div id="home" class="page active">
+
+<div class="card">
+<h2>WELCOME</h2>
+<p>FF TOPU TOURNAMENT OFFICIAL WEBSITE</p>
+</div>
+
+<div class="card">
+<h2>CONTACT</h2>
+<p>01983517425</p>
+</div>
+
+</div><div id="matches" class="page">
+
+<div class="card">
+
+<h2>BR MATCH ROOM</h2>
+
+<p><b>Room ID:</b> <span id="brRoomId">12345678</span></p>
+
+<p><b>Password:</b> <span id="brPassword">TOPU123</span></p>
+
+</div>
+
+<div class="card">
+
+<h2>CS MATCH ROOM</h2>
+
+<p><b>Room ID:</b> <span id="csRoomId">87654321</span></p>
+
+<p><b>Password:</b> <span id="csPassword">CS123</span></p>
+
+</div>
+
+</div>
+
+<div id="leaderboard" class="page green-page">
+
+<h2>🏆 LEADERBOARD</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Rank</th>
+<th>Name</th>
+<th>Points</th>
+</tr>
+
+</thead>
+
+<tbody id="leaderboardData">
+
+<tr>
+<td>1</td>
+<td>TOPU</td>
+<td>100</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>PLAYER 2</td>
+<td>80</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>PLAYER 3</td>
+<td>60</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<div id="players" class="page">
+
+<div class="card">
+
+<h2>TOP PLAYERS</h2>
+
+<div id="topPlayers">
+
+<p>TOPU</p>
+
+</div>
+
+</div>
+
+</div><div id="admin" class="page">
+
+<div class="card">
+
+<h2>🔐 ADMIN PANEL</h2>
+
+<input type="password" id="adminPass" placeholder="Admin Password">
+
+<button class="save" onclick="adminLogin()">
+Login
+</button>
+
+</div>
+
+<div id="adminArea" style="display:none;">
+
+<div class="card">
+
+<h2>BR ROOM SETTINGS</h2>
+
+<input type="text" id="newBrId" placeholder="BR Room ID">
+
+<input type="text" id="newBrPass" placeholder="BR Password">
+
+<button class="save" onclick="updateBR()">
+Update BR Room
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>CS ROOM SETTINGS</h2>
+
+<input type="text" id="newCsId" placeholder="CS Room ID">
+
+<input type="text" id="newCsPass" placeholder="CS Password">
+
+<button class="save" onclick="updateCS()">
+Update CS Room
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>TOP PLAYER SETTINGS</h2>
+
+<input type="text" id="topPlayerName" placeholder="Player Name">
+
+<button class="save" onclick="addTopPlayer()">
+Add Top Player
+</button>
+
+</div>
+
+</div>
+
+</div><script>
+
+function showPage(page){
+document.querySelectorAll('.page').forEach(p=>{
+p.classList.remove('active');
+});
+document.getElementById(page).classList.add('active');
+}
+
+function adminLogin(){
+
+let pass=document.getElementById('adminPass').value;
+
+if(pass==="TOPU123"){
+document.getElementById('adminArea').style.display="block";
+alert("Admin Login Success");
+}else{
+alert("Wrong Password");
+}
+
+}
+
+function updateBR(){
+
+document.getElementById('brRoomId').innerText=
+document.getElementById('newBrId').value;
+
+document.getElementById('brPassword').innerText=
+document.getElementById('newBrPass').value;
+
+alert("BR Room Updated");
+
+}
+
+function updateCS(){
+
+document.getElementById('csRoomId').innerText=
+document.getElementById('newCsId').value;
+
+document.getElementById('csPassword').innerText=
+document.getElementById('newCsPass').value;
+
+alert("CS Room Updated");
+
+}
+
+function addTopPlayer(){
+
+let name=document.getElementById('topPlayerName').value;
+
+if(name!=""){
+
+let p=document.createElement('p');
+
+p.innerText=name;
+
+document.getElementById('topPlayers').appendChild(p);
+
+alert("Player Added");
+
+}
+
+}function saveData(){
+
+localStorage.setItem(
+"brRoomId",
+document.getElementById(
+"brRoomId"
+).innerText
+);
+
+localStorage.setItem(
+"brPassword",
+document.getElementById(
+"brPassword"
+).innerText
+);
+
+localStorage.setItem(
+"csRoomId",
+document.getElementById(
+"csRoomId"
+).innerText
+);
+
+localStorage.setItem(
+"csPassword",
+document.getElementById(
+"csPassword"
+).innerText
+);
+
+localStorage.setItem(
+"topPlayers",
+document.getElementById(
+"topPlayers"
+).innerHTML
+);
+
+}
+
+function loadData(){
+
+if(localStorage.getItem("brRoomId")){
+
+document.getElementById(
+"brRoomId"
+).innerText=
+localStorage.getItem(
+"brRoomId"
+);
+
+}
+
+if(localStorage.getItem("brPassword")){
+
+document.getElementById(
+"brPassword"
+).innerText=
+localStorage.getItem(
+"brPassword"
+);
+
+}
+
+if(localStorage.getItem("csRoomId")){
+
+document.getElementById(
+"csRoomId"
+).innerText=
+localStorage.getItem(
+"csRoomId"
+);
+
+}
+
+if(localStorage.getItem("csPassword")){
+
+document.getElementById(
+"csPassword"
+).innerText=
+localStorage.getItem(
+"csPassword"
+);
+
+}
+
+if(localStorage.getItem("topPlayers")){
+
+document.getElementById(
+"topPlayers"
+).innerHTML=
+localStorage.getItem(
+"topPlayers"
+);
+
+}
+
+}
+
+setInterval(
+saveData,
+1000
+);
+
+window.onload=
+loadData;
+
+</script>
+
+</body>
+</html><div id="results" class="page green-page">
+
+<div class="card">
+
+<h2>🏆 MATCH RESULTS</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Winner</th>
+<th>Runner Up</th>
+</tr>
+</thead>
+
+<tbody id="resultTable">
+
+<tr>
+<td>TOPU</td>
+<td>PLAYER</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>➕ ADD RESULT</h2>
+
+<input
+type="text"
+id="winnerName"
+placeholder="Winner Name">
+
+<input
+type="text"
+id="runnerName"
+placeholder="Runner Up Name">
+
+<button
+class="save"
+onclick="addResult()">
+
+Add Result
+
+</button>
+
+</div>
+
+<script>
+
+function addResult(){
+
+let winner =
+document.getElementById(
+"winnerName"
+).value;
+
+let runner =
+document.getElementById(
+"runnerName"
+).value;
+
+if(
+winner=="" ||
+runner==""
+){
+alert("Fill All Fields");
+return;
+}
+
+let row =
+
+"<tr><td>" +
+winner +
+"</td><td>" +
+runner +
+"</td></tr>";
+
+document.getElementById(
+"resultTable"
+).innerHTML += row;
+
+localStorage.setItem(
+"resultTable",
+document.getElementById(
+"resultTable"
+).innerHTML
+);
+
+}
+
+if(
+localStorage.getItem(
+"resultTable"
+)
+){
+
+document.getElementById(
+"resultTable"
+).innerHTML =
+localStorage.getItem(
+"resultTable"
+);
+
+}
+
+</script><!-- PLAYER JOIN SYSTEM -->
+
+<div class="card">
+
+<h2>👥 JOIN TOURNAMENT</h2>
+
+<input
+type="text"
+id="playerName"
+placeholder="Player Name">
+
+<input
+type="text"
+id="playerUid"
+placeholder="Player UID">
+
+<button
+class="save"
+onclick="joinPlayer()">
+
+JOIN NOW
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>📋 JOINED PLAYERS</h2>
+
+<div id="playerList">
+
+No Players Yet
+
+</div>
+
+</div>
+
+<script>
+
+function joinPlayer(){
+
+let name =
+document.getElementById(
+"playerName"
+).value;
+
+let uid =
+document.getElementById(
+"playerUid"
+).value;
+
+if(
+name=="" ||
+uid==""
+){
+
+alert(
+"Fill All Fields"
+);
+
+return;
+
+}
+
+let players =
+JSON.parse(
+localStorage.getItem(
+"players"
+)
+) || [];
+
+players.push({
+
+name:name,
+uid:uid
+
+});
+
+localStorage.setItem(
+"players",
+JSON.stringify(
+players
+)
+);
+
+loadPlayers();
+
+alert(
+"Joined Successfully"
+);
+
+}
+
+function loadPlayers(){
+
+let players =
+JSON.parse(
+localStorage.getItem(
+"players"
+)
+) || [];
+
+let box =
+document.getElementById(
+"playerList"
+);
+
+if(!box) return;
+
+box.innerHTML="";
+
+players.forEach(
+(player,index)=>{
+
+box.innerHTML += `
+
+<div style="
+padding:10px;
+margin:10px 0;
+border:1px solid #00aa00;
+border-radius:10px;
+">
+
+👤 ${player.name}
+
+<br>
+
+🆔 ${player.uid}
+
+</div>
+
+`;
+
+});
+
+}
+
+window.addEventListener(
+"load",
+function(){
+
+loadPlayers();
+
+}
+);
+
+</script><!-- POINT MANAGER -->
+
+<div class="card">
+
+<h2>⭐ POINT MANAGER</h2>
+
+<input
+type="text"
+id="pointUid"
+placeholder="Player UID">
+
+<input
+type="number"
+id="playerPoint"
+placeholder="Points">
+
+<button
+class="save"
+onclick="updatePoint()">
+
+UPDATE POINT
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>🏆 PLAYER POINTS</h2>
+
+<div id="pointList">
+
+No Data
+
+</div>
+
+</div>
+
+<script>
+
+function updatePoint(){
+
+let uid =
+document.getElementById(
+"pointUid"
+).value;
+
+let point =
+document.getElementById(
+"playerPoint"
+).value;
+
+let players =
+JSON.parse(
+localStorage.getItem(
+"players"
+)
+) || [];
+
+players.forEach(
+player=>{
+
+if(player.uid==uid){
+
+player.points=point;
+
+}
+
+});
+
+localStorage.setItem(
+"players",
+JSON.stringify(
+players
+)
+);
+
+loadPoints();
+
+alert(
+"Points Updated"
+);
+
+}
+
+function loadPoints(){
+
+let players =
+JSON.parse(
+localStorage.getItem(
+"players"
+)
+) || [];
+
+let box =
+document.getElementById(
+"pointList"
+);
+
+if(!box) return;
+
+box.innerHTML="";
+
+players.forEach(
+player=>{
+
+box.innerHTML += `
+
+<div style="
+padding:10px;
+margin:10px 0;
+border:1px solid #00aa00;
+border-radius:10px;
+">
+
+👤 ${player.name}
+
+<br>
+
+🆔 ${player.uid}
+
+<br>
+
+⭐ ${player.points || 0} Points
+
+</div>
+
+`;
+
+});
+
+}
+
+window.addEventListener(
+"load",
+function(){
+
+loadPoints();
+
+}
+);
+
+</script><!-- TOP PLAYER SYSTEM -->
+
+<div class="card">
+
+<h2>👑 TOP PLAYER</h2>
+
+<div id="topPlayerBox">
+
+No Top Player
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>⚙️ SET TOP PLAYER</h2>
+
+<input
+type="password"
+id="topAdminPass"
+placeholder="Admin Password">
+
+<input
+type="text"
+id="topPlayerName"
+placeholder="Top Player Name">
+
+<input
+type="number"
+id="topPlayerPoints"
+placeholder="Top Player Points">
+
+<button
+class="save"
+onclick="saveTopPlayer()">
+
+SAVE TOP PLAYER
+
+</button>
+
+</div>
+
+<script>
+
+function saveTopPlayer(){
+
+const adminPass =
+"TOPU2025";
+
+let pass =
+document.getElementById(
+"topAdminPass"
+).value;
+
+if(pass !== adminPass){
+
+alert(
+"Wrong Password"
+);
+
+return;
+
+}
+
+let name =
+document.getElementById(
+"topPlayerName"
+).value;
+
+let points =
+document.getElementById(
+"topPlayerPoints"
+).value;
+
+localStorage.setItem(
+"topPlayerName",
+name
+);
+
+localStorage.setItem(
+"topPlayerPoints",
+points
+);
+
+loadTopPlayer();
+
+alert(
+"Top Player Saved"
+);
+
+}
+
+function loadTopPlayer(){
+
+let name =
+localStorage.getItem(
+"topPlayerName"
+);
+
+let points =
+localStorage.getItem(
+"topPlayerPoints"
+);
+
+let box =
+document.getElementById(
+"topPlayerBox"
+);
+
+if(!box) return;
+
+if(name){
+
+box.innerHTML =
+
+"👑 " +
+
+name +
+
+"<br><br>⭐ " +
+
+points +
+
+" Points";
+
+}
+
+}
+
+window.addEventListener(
+"load",
+function(){
+
+loadTopPlayer();
+
+}
+);
+
+</script><!-- RESULT MANAGER -->
+
+<div class="card">
+
+<h2>🏆 RESULT MANAGER</h2>
+
+<input
+type="text"
+id="winnerPlayer"
+placeholder="Winner Name">
+
+<input
+type="text"
+id="loserPlayer"
+placeholder="Loser Name">
+
+<button
+class="save"
+onclick="saveMatchResult()">
+
+SAVE RESULT
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>📊 MATCH HISTORY</h2>
+
+<div id="matchHistory">
+
+No Results Yet
+
+</div>
+
+</div>
+
+<script>
+
+function saveMatchResult(){
+
+let winner =
+document.getElementById(
+"winnerPlayer"
+).value;
+
+let loser =
+document.getElementById(
+"loserPlayer"
+).value;
+
+if(
+winner=="" ||
+loser==""
+){
+
+alert(
+"Fill All Fields"
+);
+
+return;
+
+}
+
+let results =
+JSON.parse(
+localStorage.getItem(
+"results"
+)
+) || [];
+
+results.push({
+
+winner:winner,
+loser:loser
+
+});
+
+localStorage.setItem(
+"results",
+JSON.stringify(
+results
+)
+);
+
+loadResults();
+
+alert(
+"Result Saved"
+);
+
+}
+
+function loadResults(){
+
+let results =
+JSON.parse(
+localStorage.getItem(
+"results"
+)
+) || [];
+
+let box =
+document.getElementById(
+"matchHistory"
+);
+
+if(!box) return;
+
+box.innerHTML="";
+
+results.forEach(
+(result,index)=>{
+
+box.innerHTML += `
+
+<div style="
+padding:10px;
+margin:10px 0;
+border:1px solid #00aa00;
+border-radius:10px;
+">
+
+🏆 Winner :
+${result.winner}
+
+<br><br>
+
+❌ Loser :
+${result.loser}
+
+</div>
+
+`;
+
+});
+
+}
+
+window.addEventListener(
+"load",
+function(){
+
+loadResults();
+
+}
+);
+
+</script><!-- KICK PLAYER SYSTEM -->
+
+<div class="card">
+
+<h2>❌ KICK PLAYER</h2>
+
+<input
+type="password"
+id="kickAdminPass"
+placeholder="Admin Password">
+
+<input
+type="text"
+id="kickPlayerUid"
+placeholder="Player UID">
+
+<button
+class="save"
+onclick="kickPlayer()">
+
+KICK PLAYER
+
+</button>
+
+</div>
+
+<script>
+
+function kickPlayer(){
+
+const adminPass =
+"TOPU2025";
+
+let pass =
+document.getElementById(
+"kickAdminPass"
+).value;
+
+if(pass !== adminPass){
+
+alert(
+"Wrong Password"
+);
+
+return;
+
+}
+
+let uid =
+document.getElementById(
+"kickPlayerUid"
+).value;
+
+let players =
+JSON.parse(
+localStorage.getItem(
+"players"
+)
+) || [];
+
+players =
+players.filter(
+player =>
+player.uid != uid
+);
+
+localStorage.setItem(
+"players",
+JSON.stringify(
+players)
+);
+
+if(typeof loadPlayers ===
+"function"){
+
+loadPlayers();
+
+}
+
+if(typeof loadPoints ===
+"function"){
+
+loadPoints();
+
+}
+
+alert(
+"Player Kicked Successfully"
+);
+
+}
+
+</script><!-- ADMIN DASHBOARD -->
+
+<div class="card">
+
+<h2>📊 ADMIN DASHBOARD</h2>
+
+<p>
+
+👥 Total Players :
+<span id="totalPlayers">
+0
+</span>
+
+</p>
+
+<br>
+
+<p>
+
+🏆 Total Results :
+<span id="totalResults">
+0
+</span>
+
+</p>
+
+<br>
+
+<p>
+
+👑 Top Player :
+<span id="dashboardTopPlayer">
+None
+</span>
+
+</p>
+
+</div>
+
+<script>
+
+function loadDashboard(){
+
+let players =
+JSON.parse(
+localStorage.getItem(
+"players"
+)
+) || [];
+
+let results =
+JSON.parse(
+localStorage.getItem(
+"results"
+)
+) || [];
+
+let topPlayer =
+localStorage.getItem(
+"topPlayerName"
+);
+
+if(
+document.getElementById(
+"totalPlayers"
+)
+){
+
+document.getElementById(
+"totalPlayers"
+).innerText =
+players.length;
+
+}
+
+if(
+document.getElementById(
+"totalResults"
+)
+){
+
+document.getElementById(
+"totalResults"
+).innerText =
+results.length;
+
+}
+
+if(
+document.getElementById(
+"dashboardTopPlayer"
+)
+){
+
+document.getElementById(
+"dashboardTopPlayer"
+).innerText =
+topPlayer || "None";
+
+}
+
+}
+
+window.addEventListener(
+"load",
+function(){
+
+loadDashboard();
+
+}
+);
+
+</script><!-- CONTACT PAGE -->
+
+<div id="contact" class="page">
+
+<div class="card">
+
+<h2>📞 CONTACT US</h2>
+
+<p>
+
+📱 WhatsApp :
+01983517425
+
+</p>
+
+<br>
+
+<button
+class="save"
+onclick="openWhatsApp()">
+
+OPEN WHATSAPP
+
+</button>
+
+</div>
+
+</div>
+
+<!-- RULES PAGE -->
+
+<div id="rules" class="page">
+
+<div class="card">
+
+<h2>📜 TOURNAMENT RULES</h2>
+
+<p>
+
+1. No Hack Allowed
+
+</p>
+
+<br>
+
+<p>
+
+2. No Emulator Allowed
+
+</p>
+
+<br>
+
+<p>
+
+3. Respect All Players
+
+</p>
+
+<br>
+
+<p>
+
+4. Admin Decision Final
+
+</p>
+
+<br>
+
+<p>
+
+5. Wrong UID = Disqualified
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+function openWhatsApp(){
+
+window.open(
+"https://wa.me/8801983517425"
+);
+
+}
+
+</script>
+
+<!-- EXTRA MENU -->
+
+<div class="card">
+
+<h2>🔗 QUICK LINKS</h2>
+
+<button
+class="save"
+onclick="showPage('contact')">
+
+CONTACT PAGE
+
+</button>
+
+<br><br>
+
+<button
+class="save"
+onclick="showPage('rules')">
+
+RULES PAGE
+
+</button>
+
+</div>
