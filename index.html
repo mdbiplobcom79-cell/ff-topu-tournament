@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FF TOPU TOURNAMENT</title>
+<title>BD TOPU TOUR</title>
 
 <style>
 
@@ -15,50 +15,43 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#000;
-color:#fff;
+background:#111;
+color:white;
+padding-bottom:90px;
 }
 
-header{
-background:#00aa00;
-padding:15px;
+.header{
+background:black;
+color:red;
+padding:20px;
 text-align:center;
-font-size:28px;
+font-size:30px;
 font-weight:bold;
-color:#fff;
+border-bottom:3px solid gold;
 }
 
-.logo{
-width:100px;
-height:100px;
-border-radius:50%;
-background:#fff;
-color:#00aa00;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:24px;
-font-weight:bold;
-margin:15px auto;
-}
-
-nav{
-display:flex;
-overflow:auto;
-background:#111;
-}
-
-nav button{
-flex:1;
+.notice{
+background:red;
 padding:12px;
-border:none;
-background:#111;
-color:#fff;
-font-size:15px;
+text-align:center;
+font-weight:bold;
 }
 
-nav button:hover{
-background:#00aa00;
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+padding:15px;
+}
+
+.card{
+background:#222;
+border:2px solid gold;
+border-radius:15px;
+padding:25px;
+text-align:center;
+font-weight:bold;
+cursor:pointer;
 }
 
 .page{
@@ -66,1820 +59,490 @@ display:none;
 padding:15px;
 }
 
-.active{
-display:block;
-}
-
-.card{
-background:#111;
-border:2px solid #00aa00;
-border-radius:10px;
-padding:15px;
-margin-top:10px;
-}
-
-input,textarea{
-width:100%;
-padding:10px;
-margin-top:8px;
-background:#000;
-color:#fff;
-border:1px solid #00aa00;
-}
-
-button.save{
-background:#00aa00;
-color:#fff;
-padding:10px;
-border:none;
-margin-top:10px;
-width:100%;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:10px;
-}
-
-table th,table td{
-border:1px solid #00aa00;
-padding:10px;
+.page-title{
 text-align:center;
+margin-bottom:15px;
+color:gold;
 }
 
-.green-page{
-background:#ffffff;
-color:#008000;
-min-height:100vh;
+.tour-box{
+background:#222;
+border:2px solid gold;
+border-radius:15px;
+padding:15px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+}
+
+.join-btn{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:gold;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:black;
+display:flex;
+justify-content:space-around;
+padding:15px 0;
+border-top:2px solid gold;
+}
+
+.bottom-nav a{
+color:gold;
+text-decoration:none;
+font-weight:bold;
+}
+
+.slider img{
+width:100%;
+height:180px;
+object-fit:cover;
 }
 
 </style>
 </head>
-
-<body>
-
-<header>
-FF TOPU TOURNAMENT
-</header>
-
-<div class="logo">
-FF
+<body><div class="header">
+BD TOPU TOUR
 </div>
 
-<nav>
-<button onclick="showPage('home')">Home</button>
-<button onclick="showPage('matches')">Matches</button>
-<button onclick="showPage('leaderboard')">Leaderboard</button>
-<button onclick="showPage('players')">Players</button>
-<button onclick="showPage('admin')">Admin</button>
-</nav>
+<div class="notice">
+📢 এই টুর্নামেন্ট সম্পূর্ণ ফ্রি। সবাই খেলতে পারবেন।
+</div>
 
-<div id="home" class="page active">
+<div class="slider">
+<img id="banner"
+src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
+</div>
 
-<div class="card">
-<h2>WELCOME</h2><div class="card">
-<div class="card" style="
-text-align:center;
-padding:30px;
-background:#111;
-border:2px solid red;
-">
+<div id="home">
 
-<h1 style="
-color:red;
-font-size:35px;
-">
+<div class="grid">
 
-FF TOPU
-TOURNAMENT
+<div class="card" onclick="showPage('br')">
+🏆 BR MATCH
+</div>
 
-</h1>
+<div class="card" onclick="showPage('squad')">
+👥 BR SQUAD
+</div>
+
+<div class="card" onclick="showPage('cs')">
+⚔️ CLASH SQUAD
+</div>
+
+<div class="card" onclick="showPage('noticepage')">
+📢 NOTICE
+</div>
+
+<div class="card" onclick="showPage('profile')">
+👤 PROFILE
+</div>
+
+</div>
+
+</div><div id="br" class="page">
+
+<h2 class="page-title">🏆 BR MATCHES</h2>
+
+<div class="tour-box">
+
+<h3>🎮 FREE FIRE TOURNAMENT</h3>
+
+<p>📅 Date : 20 June 2026</p>
+
+<p>🗺 Map : Bermuda</p>
+
+<p>👤 Mode : Solo</p>
+
+<p>💰 Entry Fee : FREE</p>
 
 <br>
 
-<p style="
-color:white;
-font-size:18px;
-">
+<input id="playerName" type="text" placeholder="Player Name">
 
-FREE FIRE CUSTOM
-TOURNAMENT
+<input id="playerUid" type="text" placeholder="Free Fire UID">
 
-</p>
+<input id="playerPhone" type="text" placeholder="Phone Number">
 
-<br>
-
-<button
-class="save"
-style="
-background:red;
-font-size:18px;
-">
-
+<button class="join-btn" onclick="joinNow()">
 JOIN NOW
-
 </button>
 
-</div>
-<h2>📢 FREE FIRE TOURNAMENT NOTICE</h2>
+<button class="join-btn" onclick="roomDetails()">
+ROOM DETAILS
+</button>
 
-<p>🔥 এটি একটি সম্পূর্ণ FREE TOURNAMENT।</p>
-
-<br>
-
-<p>✅ কোনো Entry Fee লাগবে না।</p>
-
-<br>
-
-<p>✅ সবাই অংশগ্রহণ করতে পারবেন।</p>
-
-<br>
-
-<p>🎮 Match Room ID এবং Password ম্যাচের আগে Leaderboard Page-এ দেওয়া হবে।</p>
-
-<br>
-
-<p>📋 সকল Player-কে সঠিক Name এবং UID ব্যবহার করতে হবে।</p>
-
-<br>
-
-<p>❌ Hack, Cheat, Emulator ব্যবহার সম্পূর্ণ নিষিদ্ধ।</p>
-
-<br>
-
-<p>📊 Match শেষ হওয়ার পরে Result এবং Leaderboard Update করা হবে।</p>
-
-<br>
-
-<p>📱 WhatsApp: 01983517425</p>
-
-<br>
-
-<p>⚠️ Admin-এর সিদ্ধান্তই চূড়ান্ত।</p>
-
-<br>
-
-<p>❤️ FF TOPU TOURNAMENT</p>
-
-</div>
-<p>FF TOPU TOURNAMENT OFFICIAL WEBSITE</p>
-</div>
-
-<div class="card">
-<h2>CONTACT</h2>
-<p>01983517425</p>
-</div>
-
-</div><div id="matches" class="page">
-
-<div class="card">
-
-<h2>BR MATCH ROOM</h2>
-
-<p><b>Room ID:</b> <span id="brRoomId">12345678</span></p>
-
-<p><b>Password:</b> <span id="brPassword">TOPU123</span></p>
-
-</div>
-
-<div class="card">
-
-<h2>CS MATCH ROOM</h2>
-
-<p><b>Room ID:</b> <span id="csRoomId">87654321</span></p>
-
-<p><b>Password:</b> <span id="csPassword">CS123</span></p>
-
-</div>
-
-</div>
-
-<div id="leaderboard" class="page green-page">
-
-<h2>🏆 LEADERBOARD</h2>
-
-<table>
-
-<thead>
-
-<tr>
-<th>Rank</th>
-<th>Name</th>
-<th>Points</th>
-</tr>
-
-</thead>
-
-<tbody id="leaderboardData">
-
-<tr>
-<td>1</td>
-<td>TOPU</td>
-<td>100</td>
-</tr>
-
-<tr>
-<td>2</td>
-<td>PLAYER 2</td>
-<td>80</td>
-</tr>
-
-<tr>
-<td>3</td>
-<td>PLAYER 3</td>
-<td>60</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-<div id="players" class="page">
-
-<div class="card">
-
-<h2>TOP PLAYERS</h2>
-
-<div id="topPlayers">
-
-<p>TOPU</p>
-
-</div>
-
-</div>
-
-</div><div id="admin" class="page">
-
-<div class="card">
-
-<h2>🔐 ADMIN PANEL</h2>
-
-<input type="password" id="adminPass" placeholder="Admin Password">
-
-<button class="save" onclick="adminLogin()">
-Login
+<button class="join-btn" onclick="prizePool()">
+PRIZE POOL
 </button>
 
 </div>
 
-<div id="adminArea" style="display:none;">
+<div id="playerList" class="tour-box" style="margin-top:15px;">
 
-<div class="card">
-
-<h2>BR ROOM SETTINGS</h2>
-
-<input type="text" id="newBrId" placeholder="BR Room ID">
-
-<input type="text" id="newBrPass" placeholder="BR Password">
-
-<button class="save" onclick="updateBR()">
-Update BR Room
-</button>
+<h3>👥 Joined Players</h3>
 
 </div>
 
-<div class="card">
+</div><div id="squad" class="page">
 
-<h2>CS ROOM SETTINGS</h2>
+<h2 class="page-title">👥 BR SQUAD</h2>
 
-<input type="text" id="newCsId" placeholder="CS Room ID">
+<div class="tour-box">
 
-<input type="text" id="newCsPass" placeholder="CS Password">
+<p>🏆 WIN PRIZE : 500 TK</p>
 
-<button class="save" onclick="updateCS()">
-Update CS Room
+<p>💰 ENTRY FEE : FREE</p>
+
+<input type="text" placeholder="Squad Leader Name">
+
+<input type="text" placeholder="Squad Leader UID">
+
+<button class="join-btn">
+JOIN SQUAD
 </button>
 
-</div>
+<button class="join-btn" onclick="roomDetails()">
+ROOM DETAILS
+</button>
 
-<div class="card">
-
-<h2>TOP PLAYER SETTINGS</h2>
-
-<input type="text" id="topPlayerName" placeholder="Player Name">
-
-<button class="save" onclick="addTopPlayer()">
-Add Top Player
+<button class="join-btn" onclick="prizePool()">
+PRIZE POOL
 </button>
 
 </div>
 
 </div>
 
-</div><script>
 
-function showPage(page){
-document.querySelectorAll('.page').forEach(p=>{
-p.classList.remove('active');
+<div id="cs" class="page">
+
+<h2 class="page-title">⚔️ CLASH SQUAD</h2>
+
+<div class="tour-box">
+
+<p>🏆 WIN PRIZE : 300 TK</p>
+
+<p>💰 ENTRY FEE : FREE</p>
+
+<input type="text" placeholder="Player Name">
+
+<input type="text" placeholder="Free Fire UID">
+
+<button class="join-btn">
+JOIN NOW
+</button>
+
+<button class="join-btn" onclick="roomDetails()">
+ROOM DETAILS
+</button>
+
+</div>
+
+</div>
+
+
+<div id="noticepage" class="page">
+
+<h2 class="page-title">📢 NOTICE BOARD</h2>
+
+<div class="tour-box">
+
+<p>✅ এই টুর্নামেন্ট সম্পূর্ণ FREE</p>
+
+<p>✅ কোনো টাকা লাগবে না</p>
+
+<p>✅ সবাই খেলতে পারবেন</p>
+
+<p>✅ Room ID & Password পরে দেওয়া হবে</p>
+
+<p>📱 WhatsApp : 01983517425</p>
+
+</div>
+
+</div><div id="profile" class="page">
+
+<h2 class="page-title">👤 PROFILE</h2>
+
+<div class="tour-box">
+
+<p><b>Name :</b> <span id="proName">Not Set</span></p>
+
+<p><b>UID :</b> <span id="proUid">Not Set</span></p>
+
+<p><b>Matches :</b> 0</p>
+
+<p><b>Wins :</b> 0</p>
+
+<p><b>Earning :</b> 0 TK</p>
+
+</div>
+
+</div>
+
+
+<a class="join-btn"
+style="
+position:fixed;
+right:15px;
+bottom:100px;
+width:auto;
+padding:15px;
+text-decoration:none;
+background:#25D366;
+color:white;
+border-radius:50px;
+"
+href="https://wa.me/8801983517425">
+
+WhatsApp
+
+</a>
+
+
+<div class="bottom-nav">
+
+<a href="#" onclick="goHome()">🏠 Home</a>
+
+<a href="#" onclick="showPage('br')">🏆 BR</a>
+
+<a href="#" onclick="showPage('cs')">⚔️ CS</a>
+
+<a href="#" onclick="showPage('profile')">👤 Profile</a>
+
+</div>
+
+
+<script>
+
+function showPage(id){
+
+document.getElementById("home").style.display="none";
+
+document.querySelectorAll(".page").forEach(function(page){
+
+page.style.display="none";
+
 });
-document.getElementById(page).classList.add('active');
-}
 
-function adminLogin(){
-
-let pass=document.getElementById('adminPass').value;
-
-if(pass==="TOPU123"){
-document.getElementById('adminArea').style.display="block";
-alert("Admin Login Success");
-}else{
-alert("Wrong Password");
-}
+document.getElementById(id).style.display="block";
 
 }
 
-function updateBR(){
 
-document.getElementById('brRoomId').innerText=
-document.getElementById('newBrId').value;
+function goHome(){
 
-document.getElementById('brPassword').innerText=
-document.getElementById('newBrPass').value;
+document.getElementById("home").style.display="block";
 
-alert("BR Room Updated");
+document.querySelectorAll(".page").forEach(function(page){
 
-}
+page.style.display="none";
 
-function updateCS(){
-
-document.getElementById('csRoomId').innerText=
-document.getElementById('newCsId').value;
-
-document.getElementById('csPassword').innerText=
-document.getElementById('newCsPass').value;
-
-alert("CS Room Updated");
+});
 
 }
 
-function addTopPlayer(){
 
-let name=document.getElementById('topPlayerName').value;
+function joinNow(){
 
-if(name!=""){
+let name =
+document.getElementById("playerName").value;
 
-let p=document.createElement('p');
+let uid =
+document.getElementById("playerUid").value;
 
-p.innerText=name;
+let phone =
+document.getElementById("playerPhone").value;
 
-document.getElementById('topPlayers').appendChild(p);
+if(name=="" || uid=="" || phone==""){
 
-alert("Player Added");
+alert("সব তথ্য পূরণ করুন");
+
+return;
 
 }
 
-}function saveData(){
+document.getElementById("proName").innerText=name;
 
-localStorage.setItem(
-"brRoomId",
-document.getElementById(
-"brRoomId"
-).innerText
-);
+document.getElementById("proUid").innerText=uid;
 
-localStorage.setItem(
-"brPassword",
-document.getElementById(
-"brPassword"
-).innerText
-);
+let list =
+document.getElementById("playerList");
 
-localStorage.setItem(
-"csRoomId",
-document.getElementById(
-"csRoomId"
-).innerText
-);
+list.innerHTML +=
 
-localStorage.setItem(
-"csPassword",
-document.getElementById(
-"csPassword"
-).innerText
-);
+"<hr><p>👤 "+name+"</p><p>🎮 "+uid+"</p><p>📱 "+phone+"</p>";
 
-localStorage.setItem(
-"topPlayers",
-document.getElementById(
-"topPlayers"
-).innerHTML
+alert("✅ Successfully Joined");
+
+}
+
+
+function roomDetails(){
+
+alert(
+"ROOM ID : 123456789\nPASSWORD : BDTOPU\nTIME : 8:00 PM"
 );
 
 }
 
-function loadData(){
 
-if(localStorage.getItem("brRoomId")){
+function prizePool(){
 
-document.getElementById(
-"brRoomId"
-).innerText=
-localStorage.getItem(
-"brRoomId"
+alert(
+"🥇 1st Place = 500 TK\n🥈 2nd Place = 300 TK\n🥉 3rd Place = 200 TK"
 );
 
 }
 
-if(localStorage.getItem("brPassword")){
 
-document.getElementById(
-"brPassword"
-).innerText=
-localStorage.getItem(
-"brPassword"
-);
+var images=[
 
-}
+"https://images.unsplash.com/photo-1542751371-adc38448a05e",
 
-if(localStorage.getItem("csRoomId")){
+"https://images.unsplash.com/photo-1511512578047-dfb367046420",
 
-document.getElementById(
-"csRoomId"
-).innerText=
-localStorage.getItem(
-"csRoomId"
-);
+"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8"
 
-}
+];
 
-if(localStorage.getItem("csPassword")){
+var i=0;
 
-document.getElementById(
-"csPassword"
-).innerText=
-localStorage.getItem(
-"csPassword"
-);
+setInterval(function(){
+
+i++;
+
+if(i>=images.length){
+
+i=0;
 
 }
 
-if(localStorage.getItem("topPlayers")){
+document.getElementById("banner").src=images[i];
 
-document.getElementById(
-"topPlayers"
-).innerHTML=
-localStorage.getItem(
-"topPlayers"
-);
-
-}
-
-}
-
-setInterval(
-saveData,
-1000
-);
-
-window.onload=
-loadData;
+},3000);
 
 </script>
 
 </body>
-</html><div id="results" class="page green-page">
-
-<div class="card">
-
-<h2>🏆 MATCH RESULTS</h2>
-
-<table>
-
-<thead>
-<tr>
-<th>Winner</th>
-<th>Runner Up</th>
-</tr>
-</thead>
-
-<tbody id="resultTable">
-
-<tr>
-<td>TOPU</td>
-<td>PLAYER</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>➕ ADD RESULT</h2>
-
-<input
-type="text"
-id="winnerName"
-placeholder="Winner Name">
-
-<input
-type="text"
-id="runnerName"
-placeholder="Runner Up Name">
-
-<button
-class="save"
-onclick="addResult()">
-
-Add Result
-
-</button>
-
-</div>
-
-<script>
-
-function addResult(){
-
-let winner =
-document.getElementById(
-"winnerName"
-).value;
-
-let runner =
-document.getElementById(
-"runnerName"
-).value;
-
-if(
-winner=="" ||
-runner==""
-){
-alert("Fill All Fields");
-return;
-}
-
-let row =
-
-"<tr><td>" +
-winner +
-"</td><td>" +
-runner +
-"</td></tr>";
-
-document.getElementById(
-"resultTable"
-).innerHTML += row;
-
-localStorage.setItem(
-"resultTable",
-document.getElementById(
-"resultTable"
-).innerHTML
-);
-
-}
-
-if(
-localStorage.getItem(
-"resultTable"
-)
-){
-
-document.getElementById(
-"resultTable"
-).innerHTML =
-localStorage.getItem(
-"resultTable"
-);
-
-}
-
-</script><!-- PLAYER JOIN SYSTEM -->
-
-<div class="card">
-
-<h2>👥 JOIN TOURNAMENT</h2>
-
-<input
-type="text"
-id="playerName"
-placeholder="Player Name">
-
-<input
-type="text"
-id="playerUid"
-placeholder="Player UID">
-
-<button
-class="save"
-onclick="joinPlayer()">
-
-JOIN NOW
-
-</button>
-
-</div>
-
-<div class="card">
-
-<h2>📋 JOINED PLAYERS</h2>
-
-<div id="playerList">
-
-No Players Yet
-
-</div>
-
-</div>
-
-<script>
-
-function joinPlayer(){
-
-let name =
-document.getElementById(
-"playerName"
-).value;
-
-let uid =
-document.getElementById(
-"playerUid"
-).value;
-
-if(
-name=="" ||
-uid==""
-){
-
-alert(
-"Fill All Fields"
-);
-
-return;
-
-}
-
-let players =
-JSON.parse(
-localStorage.getItem(
-"players"
-)
-) || [];
-
-players.push({
-
-name:name,
-uid:uid
-
-});
-
-localStorage.setItem(
-"players",
-JSON.stringify(
-players
-)
-);
-
-loadPlayers();
-
-alert(
-"Joined Successfully"
-);
-
-}
-
-function loadPlayers(){
-
-let players =
-JSON.parse(
-localStorage.getItem(
-"players"
-)
-) || [];
-
-let box =
-document.getElementById(
-"playerList"
-);
-
-if(!box) return;
-
-box.innerHTML="";
-
-players.forEach(
-(player,index)=>{
-
-box.innerHTML += `
-
-<div style="
-padding:10px;
-margin:10px 0;
-border:1px solid #00aa00;
-border-radius:10px;
-">
-
-👤 ${player.name}
-
-<br>
-
-🆔 ${player.uid}
-
-</div>
-
-`;
-
-});
-
-}
-
-window.addEventListener(
-"load",
-function(){
-
-loadPlayers();
-
-}
-);
-
-</script><!-- POINT MANAGER -->
-
-<div class="card">
-
-<h2>⭐ POINT MANAGER</h2>
-
-<input
-type="text"
-id="pointUid"
-placeholder="Player UID">
-
-<input
-type="number"
-id="playerPoint"
-placeholder="Points">
-
-<button
-class="save"
-onclick="updatePoint()">
-
-UPDATE POINT
-
-</button>
-
-</div>
-
-<div class="card">
-
-<h2>🏆 PLAYER POINTS</h2>
-
-<div id="pointList">
-
-No Data
-
-</div>
-
-</div>
-
-<script>
-
-function updatePoint(){
-
-let uid =
-document.getElementById(
-"pointUid"
-).value;
-
-let point =
-document.getElementById(
-"playerPoint"
-).value;
-
-let players =
-JSON.parse(
-localStorage.getItem(
-"players"
-)
-) || [];
-
-players.forEach(
-player=>{
-
-if(player.uid==uid){
-
-player.points=point;
-
-}
-
-});
-
-localStorage.setItem(
-"players",
-JSON.stringify(
-players
-)
-);
-
-loadPoints();
-
-alert(
-"Points Updated"
-);
-
-}
-
-function loadPoints(){
-
-let players =
-JSON.parse(
-localStorage.getItem(
-"players"
-)
-) || [];
-
-let box =
-document.getElementById(
-"pointList"
-);
-
-if(!box) return;
-
-box.innerHTML="";
-
-players.forEach(
-player=>{
-
-box.innerHTML += `
-
-<div style="
-padding:10px;
-margin:10px 0;
-border:1px solid #00aa00;
-border-radius:10px;
-">
-
-👤 ${player.name}
-
-<br>
-
-🆔 ${player.uid}
-
-<br>
-
-⭐ ${player.points || 0} Points
-
-</div>
-
-`;
-
-});
-
-}
-
-window.addEventListener(
-"load",
-function(){
-
-loadPoints();
-
-}
-);
-
-</script><!-- TOP PLAYER SYSTEM -->
-
-<div class="card">
-
-<h2>👑 TOP PLAYER</h2>
-
-<div id="topPlayerBox">
-
-No Top Player
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>⚙️ SET TOP PLAYER</h2>
-
-<input
-type="password"
-id="topAdminPass"
-placeholder="Admin Password">
-
-<input
-type="text"
-id="topPlayerName"
-placeholder="Top Player Name">
-
-<input
-type="number"
-id="topPlayerPoints"
-placeholder="Top Player Points">
-
-<button
-class="save"
-onclick="saveTopPlayer()">
-
-SAVE TOP PLAYER
-
-</button>
-
-</div>
-
-<script>
-
-function saveTopPlayer(){
-
-const adminPass =
-"TOPU2025";
-
-let pass =
-document.getElementById(
-"topAdminPass"
-).value;
-
-if(pass !== adminPass){
-
-alert(
-"Wrong Password"
-);
-
-return;
-
-}
-
-let name =
-document.getElementById(
-"topPlayerName"
-).value;
-
-let points =
-document.getElementById(
-"topPlayerPoints"
-).value;
-
-localStorage.setItem(
-"topPlayerName",
-name
-);
-
-localStorage.setItem(
-"topPlayerPoints",
-points
-);
-
-loadTopPlayer();
-
-alert(
-"Top Player Saved"
-);
-
-}
-
-function loadTopPlayer(){
-
-let name =
-localStorage.getItem(
-"topPlayerName"
-);
-
-let points =
-localStorage.getItem(
-"topPlayerPoints"
-);
-
-let box =
-document.getElementById(
-"topPlayerBox"
-);
-
-if(!box) return;
-
-if(name){
-
-box.innerHTML =
-
-"👑 " +
-
-name +
-
-"<br><br>⭐ " +
-
-points +
-
-" Points";
-
-}
-
-}
-
-window.addEventListener(
-"load",
-function(){
-
-loadTopPlayer();
-
-}
-);
-
-</script><!-- RESULT MANAGER -->
-
-<div class="card">
-
-<h2>🏆 RESULT MANAGER</h2>
-
-<input
-type="text"
-id="winnerPlayer"
-placeholder="Winner Name">
-
-<input
-type="text"
-id="loserPlayer"
-placeholder="Loser Name">
-
-<button
-class="save"
-onclick="saveMatchResult()">
-
-SAVE RESULT
-
-</button>
-
-</div>
-
-<div class="card">
-
-<h2>📊 MATCH HISTORY</h2>
-
-<div id="matchHistory">
-
-No Results Yet
-
-</div>
-
-</div>
-
-<script>
-
-function saveMatchResult(){
-
-let winner =
-document.getElementById(
-"winnerPlayer"
-).value;
-
-let loser =
-document.getElementById(
-"loserPlayer"
-).value;
-
-if(
-winner=="" ||
-loser==""
-){
-
-alert(
-"Fill All Fields"
-);
-
-return;
-
-}
-
-let results =
-JSON.parse(
-localStorage.getItem(
-"results"
-)
-) || [];
-
-results.push({
-
-winner:winner,
-loser:loser
-
-});
-
-localStorage.setItem(
-"results",
-JSON.stringify(
-results
-)
-);
-
-loadResults();
-
-alert(
-"Result Saved"
-);
-
-}
-
-function loadResults(){
-
-let results =
-JSON.parse(
-localStorage.getItem(
-"results"
-)
-) || [];
-
-let box =
-document.getElementById(
-"matchHistory"
-);
-
-if(!box) return;
-
-box.innerHTML="";
-
-results.forEach(
-(result,index)=>{
-
-box.innerHTML += `
-
-<div style="
-padding:10px;
-margin:10px 0;
-border:1px solid #00aa00;
-border-radius:10px;
-">
-
-🏆 Winner :
-${result.winner}
-
-<br><br>
-
-❌ Loser :
-${result.loser}
-
-</div>
-
-`;
-
-});
-
-}
-
-window.addEventListener(
-"load",
-function(){
-
-loadResults();
-
-}
-);
-
-</script><!-- KICK PLAYER SYSTEM -->
-
-<div class="card">
-
-<h2>❌ KICK PLAYER</h2>
-
-<input
-type="password"
-id="kickAdminPass"
-placeholder="Admin Password">
-
-<input
-type="text"
-id="kickPlayerUid"
-placeholder="Player UID">
-
-<button
-class="save"
-onclick="kickPlayer()">
-
-KICK PLAYER
-
-</button>
-
-</div>
-
-<script>
-
-function kickPlayer(){
-
-const adminPass =
-"TOPU2025";
-
-let pass =
-document.getElementById(
-"kickAdminPass"
-).value;
-
-if(pass !== adminPass){
-
-alert(
-"Wrong Password"
-);
-
-return;
-
-}
-
-let uid =
-document.getElementById(
-"kickPlayerUid"
-).value;
-
-let players =
-JSON.parse(
-localStorage.getItem(
-"players"
-)
-) || [];
-
-players =
-players.filter(
-player =>
-player.uid != uid
-);
-
-localStorage.setItem(
-"players",
-JSON.stringify(
-players)
-);
-
-if(typeof loadPlayers ===
-"function"){
-
-loadPlayers();
-
-}
-
-if(typeof loadPoints ===
-"function"){
-
-loadPoints();
-
-}
-
-alert(
-"Player Kicked Successfully"
-);
-
-}
-
-</script><!-- ADMIN DASHBOARD -->
-
-<div class="card">
-
-<h2>📊 ADMIN DASHBOARD</h2>
-
-<p>
-
-👥 Total Players :
-<span id="totalPlayers">
-0
-</span>
-
-</p>
-
-<br>
-
-<p>
-
-🏆 Total Results :
-<span id="totalResults">
-0
-</span>
-
-</p>
-
-<br>
-
-<p>
-
-👑 Top Player :
-<span id="dashboardTopPlayer">
-None
-</span>
-
-</p>
-
-</div>
-
-<script>
-
-function loadDashboard(){
-
-let players =
-JSON.parse(
-localStorage.getItem(
-"players"
-)
-) || [];
-
-let results =
-JSON.parse(
-localStorage.getItem(
-"results"
-)
-) || [];
-
-let topPlayer =
-localStorage.getItem(
-"topPlayerName"
-);
-
-if(
-document.getElementById(
-"totalPlayers"
-)
-){
-
-document.getElementById(
-"totalPlayers"
-).innerText =
-players.length;
-
-}
-
-if(
-document.getElementById(
-"totalResults"
-)
-){
-
-document.getElementById(
-"totalResults"
-).innerText =
-results.length;
-
-}
-
-if(
-document.getElementById(
-"dashboardTopPlayer"
-)
-){
-
-document.getElementById(
-"dashboardTopPlayer"
-).innerText =
-topPlayer || "None";
-
-}
-
-}
-
-window.addEventListener(
-"load",
-function(){
-
-loadDashboard();
-
-}
-);
-
-</script><!-- CONTACT PAGE -->
-
-<div id="contact" class="page">
-
-<div class="card">
-
-<h2>📞 CONTACT US</h2>
-
-<p>
-
-📱 WhatsApp :
-01983517425
-
-</p>
-
-<br>
-
-<button
-class="save"
-onclick="openWhatsApp()">
-
-OPEN WHATSAPP
-
-</button>
-
-</div>
-
-</div>
-
-<!-- RULES PAGE -->
-
-<div id="rules" class="page">
-
-<div class="card">
-
-<h2>📜 TOURNAMENT RULES</h2>
-
-<p>
-
-1. No Hack Allowed
-
-</p>
-
-<br>
-
-<p>
-
-2. No Emulator Allowed
-
-</p>
-
-<br>
-
-<p>
-
-3. Respect All Players
-
-</p>
-
-<br>
-
-<p>
-
-4. Admin Decision Final
-
-</p>
-
-<br>
-
-<p>
-
-5. Wrong UID = Disqualified
-
-</p>
-
-</div>
-
-</div>
-
-<script>
-
-function openWhatsApp(){
-
-window.open(
-"https://wa.me/8801983517425"
-);
-
-}
-
-</script>
-
-<!-- EXTRA MENU -->
-
-<div class="card">
-
-<h2>🔗 QUICK LINKS</h2>
-
-<button
-class="save"
-onclick="showPage('contact')">
-
-CONTACT PAGE
-
-</button>
-
-<br><br>
-
-<button
-class="save"
-onclick="showPage('rules')">
-
-RULES PAGE
-
-</button>
-
-</div><div class="card">
-
-<h2 style="
-color:red;
-text-align:center;
-">
-
-🏆 TOURNAMENT INFO
-
-</h2>
-
-<br>
-
-<p>
-🎮 Game :
-Free Fire
-</p>
-
-<br>
-
-<p>
-👥 Mode :
-BR & CS
-</p>
-
-<br>
-
-<p>
-💰 Entry Fee :
-FREE
-</p>
-
-<br>
-
-<p>
-📅 Match Date :
-Coming Soon
-</p>
-
-<br>
-
-<p>
-⏰ Match Time :
-8:00 PM
-</p>
-
-<br>
-
-<p>
-🎯 Total Slots :
-48 Players
-</p>
-
-<br>
-
-<p>
-🏅 Prize :
-Tournament Winner Title
-</p>
-
-</div><div class="card">
-
-<h2 style="
-color:#00ff00;
-text-align:center;
-">
-
-🔥 LIVE MATCH STATUS
-
-</h2>
-
-<br>
-
-<p>
-
-🟢 Status :
-Upcoming
-
-</p>
-
-<br>
-
-<p>
-
-🎮 Mode :
-BR Match
-
-</p>
-
-<br>
-
-<p>
-
-📅 Date :
-Coming Soon
-
-</p>
-
-<br>
-
-<p>
-
-⏰ Time :
-8:00 PM
-
-</p>
-
-<br>
-
-<p>
-
-👥 Players :
-0 / 48
-
-</p>
-
-<br>
-
-<p style="
-color:red;
-font-weight:bold;
-">
-
-⚠️ Room ID & Password
-Leaderboard Page-এ দেওয়া হবে
-
-</p>
-
-</div><div class="card">
-
-<h2 style="
-color:gold;
-text-align:center;
-">
-
-👑 TOP 3 PLAYERS
-
-</h2>
-
-<br>
-
-<div style="
-border:1px solid gold;
-padding:10px;
-border-radius:10px;
-">
-
-🥇 #1 TOPU
-<br>
-⭐ 150 Points
-
-</div>
-
-<br>
-
-<div style="
-border:1px solid silver;
-padding:10px;
-border-radius:10px;
-">
-
-🥈 #2 PLAYER
-<br>
-⭐ 120 Points
-
-</div>
-
-<br>
-
-<div style="
-border:1px solid #cd7f32;
-padding:10px;
-border-radius:10px;
-">
-
-🥉 #3 PLAYER
-<br>
-⭐ 100 Points
-
-</div>
-
-</div><div class="card">
-
-<h2 style="
-color:#00ff00;
-text-align:center;
-">
-
-📊 LEADERBOARD PREVIEW
-
-</h2>
-
-<br>
-
-<table style="
+</html><div id="loginPage" style="
+position:fixed;
+top:0;
+left:0;
 width:100%;
-text-align:center;
+height:100%;
+background:#111;
+z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
 ">
 
-<tr>
-<th>Rank</th>
-<th>Player</th>
-<th>Points</th>
-</tr>
+<div class="tour-box" style="width:90%;max-width:400px;">
 
-<tr>
-<td>🥇</td>
-<td>TOPU</td>
-<td>150</td>
-</tr>
-
-<tr>
-<td>🥈</td>
-<td>PLAYER 2</td>
-<td>120</td>
-</tr>
-
-<tr>
-<td>🥉</td>
-<td>PLAYER 3</td>
-<td>100</td>
-</tr>
-
-<tr>
-<td>4</td>
-<td>PLAYER 4</td>
-<td>90</td>
-</tr>
-
-<tr>
-<td>5</td>
-<td>PLAYER 5</td>
-<td>80</td>
-</tr>
-
-</table>
-
-<br>
-
-<p style="
-text-align:center;
-color:red;
-">
-
-🏆 Full Leaderboard
-Leaderboard Page-এ দেখুন
-
-</p>
-
-</div><div class="card">
-
-<h2 style="
-color:red;
-text-align:center;
-">
-
-📱 CONTACT & SUPPORT
-
+<h2 style="text-align:center;color:gold;">
+🔐 LOGIN
 </h2>
 
-<br>
+<input id="loginName" type="text" placeholder="Enter Name">
 
-<p>
+<input id="loginUid" type="text" placeholder="Enter UID">
 
-👤 Admin :
-FF TOPU TOURNAMENT
+<button class="join-btn" onclick="loginUser()">
+LOGIN
+</button>
 
-</p>
+</div>
 
-<br>
+</div>function loginUser(){
 
-<p>
+let name =
+document.getElementById("loginName").value;
 
-📞 WhatsApp :
-01983517425
+let uid =
+document.getElementById("loginUid").value;
 
-</p>
+if(name=="" || uid==""){
 
-<br>
+alert("সব তথ্য দিন");
 
-<p>
+return;
 
-🕒 Support Time :
-10:00 AM - 10:00 PM
+}
 
-</p>
+document.getElementById("proName").innerText=name;
 
-<br>
+document.getElementById("proUid").innerText=uid;
 
-<center>
+document.getElementById("loginPage").style.display="none";
 
-<a
-href="https://wa.me/8801983517425"
-target="_blank">
+alert("✅ Login Successful");
 
-<button
-class="save"
-style="
-background:#00aa00;
-">
+}<div id="statusPage" class="page">
 
-WHATSAPP SUPPORT
+<h2 class="page-title">📊 TOURNAMENT STATUS</h2>
+
+<div class="tour-box">
+
+<p>🆔 Tournament ID :
+<span id="tourId">BDT-2026-001</span></p>
+
+<p>👥 Joined Players :
+<span id="joinCount">0</span></p>
+
+<p>🏠 Room Status :
+<span id="roomStatus">Closed</span></p>
+
+<button class="join-btn"
+onclick="openRoom()">
+
+OPEN ROOM
 
 </button>
 
-</a>
+<button class="join-btn"
+onclick="closeRoom()">
 
-</center>
+CLOSE ROOM
 
-</div>
-
-<div class="card">
-
-<h2 style="
-color:#00ff00;
-text-align:center;
-">
-
-❤️ THANK YOU
-
-</h2>
-
-<br>
-
-<p style="
-text-align:center;
-">
-
-Thanks for joining
-
-FF TOPU TOURNAMENT
-
-</p>
+</button>
 
 </div>
+
+</div>var totalPlayers = 0;
+
+function openRoom(){
+
+document.getElementById(
+"roomStatus"
+).innerText="Open";
+
+alert("✅ Room Opened");
+
+}
+
+function closeRoom(){
+
+document.getElementById(
+"roomStatus"
+).innerText="Closed";
+
+alert("❌ Room Closed");
+
+}
