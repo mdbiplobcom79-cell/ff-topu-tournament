@@ -1,17 +1,156 @@
-<div id="home" class="page">
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BD TOUR TOPU</title>
 
-<h1>🏠 BD TOUR TOPU</h1>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
 
-<div style="
-background:linear-gradient(45deg,#ff0000,#ff9900);
+body{
+background:#f2f2f2;
+}
+
+.page{
+display:none;
+padding:15px;
+}
+
+.active{
+display:block;
+}
+
+.header{
+background:#ff0000;
 color:white;
-padding:25px;
-border-radius:20px;
+padding:15px;
 text-align:center;
-font-size:28px;
+font-size:25px;
 font-weight:bold;
-margin-bottom:20px;">
-FREE FIRE TOURNAMENT
+border-radius:0 0 20px 20px;
+}
+
+.notice{
+background:#003cff;
+color:white;
+padding:15px;
+margin-top:15px;
+border-radius:15px;
+font-weight:bold;
+}
+
+.banner{
+height:180px;
+border-radius:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:35px;
+font-weight:bold;
+margin-top:20px;
+cursor:pointer;
+}
+
+.br{
+background:linear-gradient(45deg,#ff0000,#ff8800);
+}
+
+.cs{
+background:linear-gradient(45deg,#0044ff,#00ccff);
+}
+
+.card{
+background:white;
+padding:15px;
+margin-top:15px;
+border-radius:20px;
+box-shadow:0 0 10px rgba(0,0,0,.15);
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.join{
+background:#00b050;
+color:white;
+}
+
+.back{
+background:black;
+color:white;
+}
+
+.bar{
+width:100%;
+height:25px;
+background:#ddd;
+border-radius:20px;
+overflow:hidden;
+margin-top:15px;
+}
+
+.fill{
+width:0%;
+height:25px;
+background:red;
+}
+
+.winnerBtn{
+background:gold;
+color:black;
+}
+
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+width:70px;
+height:70px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+text-decoration:none;
+font-size:35px;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div id="home" class="page active">
+
+<div class="header">
+BD TOUR TOPU
+</div>
+
+<div class="notice">
+📢 FREE TOURNAMENT - সবাই খেলতে পারবেন
 </div>
 
 <div class="banner br" onclick="showPage('brpage')">
@@ -22,10 +161,161 @@ FREE FIRE TOURNAMENT
 🎯 CS MATCH
 </div>
 
-<div class="banner"
-style="background:gold;color:black;"
+<button class="winnerBtn"
 onclick="showPage('winner')">
 👑 WINNER PAGE
+</button>
+
+</div>
+
+<div id="brpage" class="page">
+
+<div class="header">
+🏆 BR TOURNAMENT
+</div>
+
+<div class="card">
+
+<input type="text"
+placeholder="Enter Name">
+
+<input type="text"
+placeholder="Enter UID">
+
+<button class="join"
+onclick="joinBR()">
+JOIN
+</button>
+
+<h3 id="brmsg"></h3>
+
+<p id="slottext">
+0 / 12 Joined
+</p>
+
+<div class="bar">
+<div class="fill" id="fill"></div>
 </div>
 
 </div>
+
+<button class="back"
+onclick="showPage('home')">
+BACK
+</button>
+
+</div>
+
+<div id="cspage" class="page">
+
+<div class="header">
+🎯 CS TOURNAMENT
+</div>
+
+<div class="card">
+
+<input type="text"
+placeholder="Enter Name">
+
+<input type="text"
+placeholder="Enter UID">
+
+<button class="join"
+onclick="joinCS()">
+JOIN
+</button>
+
+<h3 id="csmsg"></h3>
+
+</div>
+
+<button class="back"
+onclick="showPage('home')">
+BACK
+</button>
+
+</div>
+
+<div id="winner" class="page">
+
+<div class="header">
+👑 WINNER PAGE
+</div>
+
+<div class="card">
+
+<h2>🏆 Winner Name : TOPU</h2>
+
+<h2>🎯 Kill Count : 15</h2>
+
+<h2>🆔 Room ID : 123456</h2>
+
+<h2>🔑 Password : 9999</h2>
+
+</div>
+
+<button class="back"
+onclick="showPage('home')">
+BACK
+</button>
+
+</div>
+
+<a class="whatsapp"
+href="https://wa.me/8801983517425">
+💬
+</a>
+
+<script>
+
+function showPage(id){
+
+document.querySelectorAll(".page")
+.forEach(page=>{
+page.classList.remove("active");
+});
+
+document.getElementById(id)
+.classList.add("active");
+
+}
+
+let joined=0;
+
+function joinBR(){
+
+if(joined<12){
+
+joined++;
+
+let percent=
+(joined/12)*100;
+
+document.getElementById("fill")
+.style.width=
+percent+"%";
+
+document.getElementById("slottext")
+.innerHTML=
+joined+" / 12 Joined";
+
+document.getElementById("brmsg")
+.innerHTML=
+"Registration Complete ✅";
+
+}
+
+}
+
+function joinCS(){
+
+document.getElementById("csmsg")
+.innerHTML=
+"Registration Complete ✅";
+
+}
+
+</script>
+
+</body>
+  </html>
